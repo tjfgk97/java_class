@@ -1,4 +1,4 @@
-package java_classch01_Variables;
+package ch01_Variables;
 
 public class Ex01_Variables {
 
