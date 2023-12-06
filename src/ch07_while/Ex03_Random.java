@@ -16,7 +16,7 @@ public class Ex03_Random {
         // 실수(double) => 정수(int) : 형변환(type conversion)
         System.out.println((int) (Math.random() * 10)); //0 이상 9 이하의 정수 출력
         System.out.println((int) (Math.random() * 10) + 1); // 1 이상 10 이하의 정수
-        System.out.println((int) (Math.random() * 45) + 1); // 1 이사 45 이하의 정수
+        System.out.println((int) (Math.random() * 45) + 1); // 1 이상 45 이하의 정수
 
 
         // 형변환
