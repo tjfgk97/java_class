@@ -32,15 +32,15 @@ public class Ex01_WhileBasic {
             System.out.println("break 다음 문장");
         }
 
-        int l =1;
+        int l = 1;
         boolean run = true;
-        while(run){
-            System.out.println("l = "+l);
+        while (run) {
+            System.out.println("l = " + l);
             l++;
-            if(l == 3){
+            if (l == 3) {
                 run = false;
             }
-            System.out.println("run=flase 다음 문장");
+            System.out.println("run=false 다음 문장");
         }
     }
 
