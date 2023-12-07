@@ -7,9 +7,9 @@ public class Ex08_WhileEx {
 
 
         boolean run = true;
+        int totalIns = 0; //잔고
 
         Scanner scn = new Scanner(System.in);
-        int totalIns = 0;
 
         while (run) {
 
@@ -20,7 +20,6 @@ public class Ex08_WhileEx {
             System.out.print("선택>");
             int num = scn.nextInt();
 
-
             if (num == 1) {
                 System.out.print("예금액>");
                 int insert = scn.nextInt();
@@ -29,11 +28,11 @@ public class Ex08_WhileEx {
             } else if (num == 2) {
                 System.out.print("출금액>");
                 int withdraw = scn.nextInt();
-                if (withdraw > totalIns) {
-                    System.out.println("잔고가 부족합니다.");
-                } else {
-                    totalIns -= withdraw;
-                }
+                     if (withdraw > totalIns) {
+                        System.out.println("잔고가 부족합니다.");
+                     } else {
+                        totalIns -= withdraw;
+                     }
                 System.out.println("현재 잔액은 " + totalIns + "원입니다.");
             } else if (num == 3) {
                 System.out.println("현재 잔액은 " + totalIns + "원입니다.");
