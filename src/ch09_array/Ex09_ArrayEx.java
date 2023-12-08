@@ -45,14 +45,16 @@ public class Ex09_ArrayEx {
                 }
                 System.out.println("최고 점수는 " + max + "점입니다.");
 
+//          ----최고 점수---------------------------------------------------------
+
                 for (i = 0; i < student.length; i++) {
 
                     sum += student[i];
                     avg = sum / student.length;
                 }
-                System.out.println("평균 점수는 " + ( avg) + "점입니다.");
+                System.out.println("평균 점수는 " + avg + "점입니다.");
 
-//                    ----최고점수---------------------------------------------------------
+//          ----평균 점수---------------------------------------------------------
 
                 for (i = 0; i < student.length; i++) {
                     for (int j = 0; j < student.length; j++) {
@@ -66,6 +68,8 @@ public class Ex09_ArrayEx {
                 for (i = 0; i < student.length; i++) {
                     System.out.println((i + 1) + "등 : " + student[i]);
                 }
+//          ----오름차순---------------------------------------------------------
+                
             } else if (insert == 5) {
                 System.out.println("프로그램을 종료합니다.");
                 run = false;
