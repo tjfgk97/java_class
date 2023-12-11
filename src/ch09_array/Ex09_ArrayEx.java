@@ -16,6 +16,9 @@ public class Ex09_ArrayEx {
             System.out.println("---------------------------------------------------");
             System.out.println("1.학생수입력 | 2.점수입력 | 3.점수목록 | 4.분석 | 5.종료");
             System.out.println("---------------------------------------------------");
+            System.out.println("화이팅!!!! - 안재문 -");
+            System.out.println("\t ㄴ 고맙습니당 ㅎㅎ - 김태송 -");
+            System.out.println("\t\t ㄴ 넵 열심히 하세욥,,,!!");
 
             System.out.print("선택>");
             int insert = scn.nextInt();
