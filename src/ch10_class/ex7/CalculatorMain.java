@@ -38,10 +38,10 @@ public class CalculatorMain {
                 System.out.print("두 번째 숫자>");
                 int num2 = scn.nextInt();
                 int result = calculator.mul(num1, num2);
-                System.out.println("결과 : "+result);
+                System.out.println("결과 : " + result);
             } else if (cal == 4) {
-                 int result = calculator.div();
-                System.out.println("결과 : "+result);
+                int result = calculator.div();
+                System.out.println("결과 : " + result);
             } else {
                 System.out.println("보기에 없는 번호입니다.\n실행을 종료합니다.");
                 run = false;
