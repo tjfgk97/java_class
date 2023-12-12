@@ -1,8 +1,8 @@
-package ch10_class.ex04;
+package ch10_class.ex4;
 
 public class Student {
     // 이름(studentName), 학번(studentNumber), 학과(studentMajor) 필드
-
+    // ↓↓필드를 정의하기 위한 목적↓↓
     String studentName;
     String studentNumber;
     String studentMajor;
