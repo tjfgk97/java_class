@@ -9,8 +9,8 @@ public class MethodExMain {
         System.out.println("호출 후");
 
         // method2 호출
-        methodEx.method2("10");
-        String str1 = "오늘은 화요일^_^";
+        methodEx.method2("10 ");
+        String str1 = "오늘은 화요일^_^ ";
         methodEx.method2(str1);
 
         // method3 호출

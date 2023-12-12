@@ -38,5 +38,6 @@ public class Book {
         this.bookPrice = bookPrice;
 
         System.out.println("bookTitle = " + bookTitle + ", bookAuthor = " + bookAuthor + ", bookPublisher = " + bookPublisher + ", isbn = " + isbn + ", bookPrice = " + bookPrice);
+        System.out.println("항상 응원 합니다~~!!");
     }
 }
