@@ -72,16 +72,14 @@ public class BookRepository {
      * 없으면 null 리턴
      */
 
-    public List<BookDTO> findByTitle(String title) {
+    public BookDTO findByTitle(String title) {
         BookDTO bookDTO = null;
         for (int i = 0; i < bookDTOList.size(); i++) {
-//            if(title.equals(bookDTOList.get(i).getBookTitle())){
-            if (bookDTOList.get(i).getBookTitle().contains(title)) {
-//            if (bookDTOList.get(i).getBookTitle().indexOf(title) >= 0) {
+            if (title.equals(bookDTOList.get(i).getBookTitle())) {
                 bookDTO = bookDTOList.get(i);
             }
         }
-        return bookDTOList;
+        return bookDTO;
     }
 
     public List<BookDTO> search(String bookTitle) {

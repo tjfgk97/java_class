@@ -92,8 +92,21 @@ public class BookService {
      * 없으면 없다고 출력
      */
 
+
+    public void findByTitle() {
+        System.out.println("검색할 책의 제목을 입력하세요.");
+        System.out.print("입력>");
+        String title = scn.next();
+        BookDTO bookDTO = bookRepository.findByTitle(title);
+        if (bookDTO != null) {
+            System.out.println("bookDTO = " + bookDTO);
+        } else {
+            System.out.println("요청하신 정보를 찾을 수 없습니다.");
+        }
+    }
+
     public void search() {
-        System.out.print("검색어: ");
+        System.out.println("검색어를 입력하세요.");
         String bookTitle = scn.next();
         List<BookDTO> bookDTOList = bookRepository.search(bookTitle);
         if (bookDTOList.size() > 0) {
@@ -102,19 +115,7 @@ public class BookService {
             }
         } else {
             // bookDTOList.size() == 0 => 결과가 없다
-            System.out.println("검색 결과가 없습니다!");
-        }
-    }
-
-    public void findByTitle() {
-        System.out.println("검색할 책의 제목을 입력하세요.");
-        System.out.print("입력>");
-        String title = scn.next();
-        List<BookDTO> bookDTO = bookRepository.findByTitle(title);
-        if (bookDTO != null) {
-            System.out.println("bookDTO = " + bookDTO);
-        } else {
-            System.out.println("요청하신 정보를 찾을 수 없습니다.");
+            System.out.println("검색 결과가 없습니다.");
         }
     }
 
