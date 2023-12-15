@@ -46,11 +46,12 @@ public class StudentDTO {
     public void setStudentMobile(String studentMobile) {
         this.studentMobile = studentMobile;
     }
+    private static Long idValue = 1L;
 
     public StudentDTO() {
+
     }
 
-    private static Long idValue = 1L;
     public StudentDTO(String studentName, String studentNumber, String studentMajor, String studentMobile) {
         this.id = idValue++;
         this.studentName = studentName;

@@ -26,7 +26,9 @@ public class StudentMain {
                 studentService.method2();
             } else if (selectNo == 3) {
                 studentService.method3();
-            } else if (selectNo == 4) {
+            } else if(selectNo == 4){
+                studentService.method4();;
+            }else {
                 System.out.println("프로그램을 종료합니다.");
                 run = false;
             }
