@@ -46,6 +46,8 @@ public class StudentDTO {
     public void setStudentMobile(String studentMobile) {
         this.studentMobile = studentMobile;
     }
+    
+    //정적멤버
     private static Long idValue = 1L;
 
     public StudentDTO() {
