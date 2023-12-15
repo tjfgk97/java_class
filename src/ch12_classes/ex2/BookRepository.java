@@ -1,7 +1,5 @@
 package ch12_classes.ex2;
 
-import ch10_class.ex5.Book;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,7 +76,7 @@ public class BookRepository {
         BookDTO bookDTO = null;
         for (int i = 0; i < bookDTOList.size(); i++) {
 //            if(title.equals(bookDTOList.get(i).getBookTitle())){
-            if(bookDTOList.get(i).getBookTitle().contains(title)){
+            if (bookDTOList.get(i).getBookTitle().contains(title)) {
 //            if (bookDTOList.get(i).getBookTitle().indexOf(title) >= 0) {
                 bookDTO = bookDTOList.get(i);
             }
@@ -86,6 +84,29 @@ public class BookRepository {
         return bookDTOList;
     }
 
+    public List<BookDTO> search(String bookTitle) {
+        // 검색결과를 담을 List 선언
+        List<BookDTO> bookDTOS = new ArrayList<>();
+        for (int i = 0; i < bookDTOList.size(); i++) {
+            // 저장되어 있는 도서명에 검색어가 포함되어 있으면 true
+            if (bookDTOList.get(i).getBookTitle().contains(bookTitle)) {
+                // 조건을 만족하면 bookDTOS 에 추가
+//                bookDTOS.add(bookDTOList.get(i));
+                BookDTO bookDTO = bookDTOList.get(i);
+                bookDTOS.add(bookDTO);
+            }
+        }
+        return bookDTOS;
+    }
 
-
-  }
+    public boolean update(Long id, String bookPrice) {
+        boolean result = false;
+        for (int i = 0; i < bookDTOList.size(); i++) {
+            if(id.equals(bookDTOList.get(i).getId())){
+                bookDTOList.get(i).setBookPrice(bookPrice);
+                result = true;
+            }
+        }
+        return result;
+    }
+}

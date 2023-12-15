@@ -68,6 +68,7 @@ public class BookService {
     Scanner scn = new Scanner(System.in);
 
     Long id = 0L;
+
     public void findById() {
         System.out.println("아이디를 입력하세요.");
         System.out.print("입력>");
@@ -91,6 +92,20 @@ public class BookService {
      * 없으면 없다고 출력
      */
 
+    public void search() {
+        System.out.print("검색어: ");
+        String bookTitle = scn.next();
+        List<BookDTO> bookDTOList = bookRepository.search(bookTitle);
+        if (bookDTOList.size() > 0) {
+            for (BookDTO bookDTO : bookDTOList) {
+                System.out.println("bookDTO = " + bookDTO);
+            }
+        } else {
+            // bookDTOList.size() == 0 => 결과가 없다
+            System.out.println("검색 결과가 없습니다!");
+        }
+    }
+
     public void findByTitle() {
         System.out.println("검색할 책의 제목을 입력하세요.");
         System.out.print("입력>");
@@ -103,7 +118,23 @@ public class BookService {
         }
     }
 
+    public void update() {
+        // 수정할 id를 입력받음
+        // 해당 id 도서가 있다면 수정할 가격을 입력받고 수정 처리
+        // 없으면 없다고 출력
+        System.out.println("수정할 id를 입력하세요.");
+        Long id = scn.nextLong();
+        BookDTO bookDTO = bookRepository.findById(id);
+        if (bookDTO != null) {
+            System.out.println("수정할 가격을 입력하세요.");
+            String bookPrice = scn.next();
+            boolean updateResult = bookRepository.update(id, bookPrice);
+            if (updateResult) {
+                System.out.println("수정 성공");
+            } else {
+                System.out.println("수정 실패");
+            }
 
-
-
+        }
+    }
 }
