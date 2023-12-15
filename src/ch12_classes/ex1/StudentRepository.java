@@ -39,7 +39,19 @@ public class StudentRepository {
     /**
      * return type : List
      */
-    public List<StudentDTO> method4(){
+    public List<StudentDTO> method4() {
         return studentDTOList;
+    }
+
+    StudentDTO studentDTO = new StudentDTO();
+
+    public StudentDTO method5(Long id) {
+        StudentDTO studentDTO = null;
+        for (int i = 0; i < studentDTOList.size(); i++) {
+            if (id.equals(studentDTOList.get(i).getId())) {
+                studentDTO = studentDTOList.get(i);
+            }
+        }
+        return studentDTO;
     }
 }
