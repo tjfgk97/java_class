@@ -137,4 +137,16 @@ public class BookService {
 
         }
     }
+
+    public void delete() {
+        System.out.println("삭제할 아이디를 입력하세요.");
+        Long id = scn.nextLong();
+        boolean result = bookRepository.delete(id);
+        if (result) {
+            System.out.println("삭제 성공");
+        } else {
+            System.out.println("삭제 실패");
+        }
+
+    }
 }
