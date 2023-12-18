@@ -53,8 +53,8 @@ public class MemberService {
 
         MemberDTO memberDTO = new MemberDTO(loginEmail, loginPw);
 
-        boolean result = memberRepository.login(loginEmail, loginPw);
-        if (result) {
+        MemberDTO result = memberRepository.login(loginEmail, loginPw);
+        if (result != null) {
             loginedEmail = loginEmail;
             System.out.println("로그인 성공");
         } else {
@@ -83,18 +83,33 @@ public class MemberService {
         if (loginedEmail != null) {
             System.out.println("수정할 전화번호를 입력하세요.");
             String upPhone = scn.next();
-            memberRepository.update(id, upPhone);
+            boolean result = memberRepository.update(id, upPhone);
+//          boolean result = memberRepository.update(loginedEmail, upPhone);
+            if(result){
+                System.out.println("회원 정보가 수정되었습니다.");
+            }else {
+                System.out.println("회원 정보 수정 실패");
+            }
         } else {
             System.out.println("로그인이 필요한 서비스입니다.");
         }
     }
 
     public void withdrawal() {
+        if(loginedEmail != null){
+            System.out.println("정말 탈퇴하시겠습니까?");
+            System.out.println("비밀번호를 입력하세요.");
+            String pw = scn.next();
+            MemberDTO memberDTO = memberRepository.login(loginedEmail, pw);
+            if(memberDTO != null){
+                boolean result = memberRepository.withdrawal(loginedEmail);
+            }
+        }
         System.out.println("탈퇴할 아이디를 입력하세요.");
         Long id = scn.nextLong();
 
         if (loginedEmail != null) {
-            memberRepository.withdrawal(id);
+            memberRepository.withdrawal(loginedEmail);
         } else {
             System.out.println("요청하신 정보를 찾을 수 없습니다.");
         }
@@ -109,6 +124,11 @@ public class MemberService {
             loginedEmail = null;
             System.out.println("로그아웃이 완료되었습니다.");
         }
+
+//        public void logout(){
+//            loginedEmail = null;
+//            System.out.println("로그아웃이 완료되었습니다.");
+//        }// 굳이 리포지토리 클래스까지 갈 필요 없이 서비스에서 값만 비워주면 된다.
     }
 
 

@@ -14,13 +14,12 @@ public class MemberRepository {
     }
 
 
-    public boolean login(String loginEmail, String loginPw) {
-        boolean result = false;
+    public MemberDTO login(String loginEmail, String loginPw) {
+        MemberDTO result = null;
         for (int i = 0; i < memberDTOList.size(); i++) {
             if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
                 if (loginPw.equals(memberDTOList.get(i).getMemberPassword())) {
-                    memberDTOList.get(i);
-                    result = true;
+                    result = memberDTOList.get(i);
                 }
             }
         }
@@ -38,9 +37,11 @@ public class MemberRepository {
     }
 
     public boolean update(Long id, String upPhone) {
+//  public boolean update(String loginedEmail, String upPhone){
         boolean result = false;
         for (int i = 0; i < memberDTOList.size(); i++) {
             if (id.equals(memberDTOList.get(i).getId())) {
+//          if (loginedEmail.equals(memberDTOList.get(i).getMemberEmail())) {
                 memberDTOList.get(i).setMemberMobile(upPhone);
                 result = true;
             } else {
@@ -53,20 +54,20 @@ public class MemberRepository {
 
     Scanner scn = new Scanner(System.in);
 
-    public boolean withdrawal(Long id) {
+    public boolean withdrawal(String loginedeMail) {
         boolean result = false;
         for (int i = 0; i < memberDTOList.size(); i++) {
-            if (id.equals(memberDTOList.get(i).getId())) {
+            if (loginedeMail.equals(memberDTOList.get(i).getId())) {
                 System.out.println("비밀번호를 입력하세요.");
                 String pw = scn.next();
                 if (pw.equals(memberDTOList.get(i).getMemberPassword())) {
                     memberDTOList.remove(i);
                     result = true;
-                }else {
+                } else {
                     System.out.println("비밀번호가 일치하지 않습니다.");
                     result = false;
                 }
-            }else {
+            } else {
                 System.out.println("아이디가 일치하지 않습니다.");
                 result = false;
             }
@@ -77,9 +78,9 @@ public class MemberRepository {
     public boolean logout(Long id) {
         boolean result = false;
         for (int i = 0; i < memberDTOList.size(); i++) {
-            if(id.equals(memberDTOList.get(i).getId())){
+            if (id.equals(memberDTOList.get(i).getId())) {
                 result = true;
-            }else{
+            } else {
                 System.out.println("찾을 수 없는 아이디입니다.");
                 result = false;
             }
@@ -91,10 +92,21 @@ public class MemberRepository {
     public boolean check(String email) {
         boolean result = false;
         for (int i = 0; i < memberDTOList.size(); i++) {
-            if(email.equals(memberDTOList.get(i).getMemberEmail())){
+            if (email.equals(memberDTOList.get(i).getMemberEmail())) {
                 result = true;
             }
         }
         return result;
     }
+
+//    public boolean check(String email){
+//            boolean result = true;
+//            for (int i = 0; i < memberDTOList.size(); i++) {
+//                if (email.equals(memberDTOList.get(i).getMemberEmail())) {
+//                    // 중복되는 이메일이 있다 => 결과를 false로 주자
+//                    result = false;
+//                }
+//            }
+//            return result;
+//        }
 }
