@@ -124,7 +124,9 @@ public class BookService {
         // 해당 id 도서가 있다면 수정할 가격을 입력받고 수정 처리
         // 없으면 없다고 출력
         System.out.println("수정할 id를 입력하세요.");
+
         Long id = scn.nextLong();
+        // ↓↓데이터의 재사용성↓↓
         BookDTO bookDTO = bookRepository.findById(id);
         if (bookDTO != null) {
             System.out.println("수정할 가격을 입력하세요.");
