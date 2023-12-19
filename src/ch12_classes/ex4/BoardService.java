@@ -1,5 +1,6 @@
 package ch12_classes.ex4;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -85,6 +86,19 @@ public class BoardService {
             System.out.println("게시글이 삭제되었습니다.");
         }else{
             System.out.println("게시글 삭제에 실패했습니다.");
+        }
+    }
+
+    public void searchByTitle() {
+        System.out.println("제목을 입력하세요.");
+        String title = scn.next();
+
+        List<BoardDTO> boardDTOList = boardRepository.searchByTitle(title);
+
+        if(boardDTOList.size() > 0){
+            for (BoardDTO boardDTO : boardDTOList) {
+                System.out.println("boardDTO = " + boardDTO);
+            }
         }
     }
 }

@@ -34,7 +34,7 @@ public class BoardMain {
             } else if (select == 5) {
                 boardService.delete();
             } else if (select == 6) {
-
+                boardService.searchByTitle();
             } else if (select == 7) {
                 System.out.println("프로그램을 종료합니다.");
                 run = false;

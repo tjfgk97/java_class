@@ -70,10 +70,21 @@ public class BoardRepository {
                     result = false;
                 }
             } else {
-                System.out.println("일치하는 아이디를 찾을 수 없습니다.");
+//                System.out.println("일치하는 아이디를 찾을 수 없습니다.");
                 result = false;
             }
         }
         return result;
+    }
+
+    public List<BoardDTO> searchByTitle(String title) {
+        List<BoardDTO> boardDTOS = new ArrayList<>();
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if (boardDTOList.get(i).getBoardTitle().contains(title)) {
+                BoardDTO boardDTO = boardDTOList.get(i);
+                boardDTOS.add(boardDTO);
+            }
+        }
+        return boardDTOS;
     }
 }
