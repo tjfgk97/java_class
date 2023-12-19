@@ -17,4 +17,16 @@ public class BoardRepository {
 
         return boardDTOList;
     }
+
+    public BoardDTO search(Long id) {
+        BoardDTO boardDTO = null;
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if(id.equals(boardDTOList.get(i).getId())){
+
+                boardDTO = boardDTOList.get(i);
+                boardDTO.setViews();
+            }
+        }
+        return boardDTO;
+    }
 }

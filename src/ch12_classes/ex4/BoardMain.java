@@ -27,7 +27,8 @@ public class BoardMain {
             } else if (select == 2) {
                 boardService.list();
             } else if (select == 3) {
-
+                boardService.list();
+                boardService.search();
             } else if (select == 4) {
 
             } else if (select == 5) {

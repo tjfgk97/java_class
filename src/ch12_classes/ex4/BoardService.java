@@ -41,4 +41,18 @@ public class BoardService {
             System.out.println("입력하신 글 번호는 존재하지 않습니다.");
         }
     }
+
+
+
+    public void search() {
+        System.out.println("조회할 게시글의 번호를 입력하세요.");
+        Long id = scn.nextLong();
+
+        BoardDTO boardDTO = boardRepository.search(id);
+        if(boardDTO != null){
+            System.out.println("boardDTO = " + boardDTO.getBoardContents());
+        }else {
+            System.out.println("존재하지 않는 게시글입니다.");
+        }
+    }
 }

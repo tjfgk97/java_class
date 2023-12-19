@@ -1,6 +1,8 @@
 package ch12_classes.ex4;
 
 public class BoardDTO {
+
+    private int views;
     private Long id;
     private String boardTitle;
     private String boardWriter;
@@ -53,6 +55,14 @@ public class BoardDTO {
 
     }
 
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews() {
+        this.views++;
+    }
+
     private static Long idValue = 1L;
     public BoardDTO(String boardTitle, String boardWriter, String boardContents, String boardPass) {
         this.id = idValue++;
@@ -62,14 +72,14 @@ public class BoardDTO {
         this.boardPass = boardPass;
     }
 
+
     @Override
     public String toString() {
         return "BoardDTO{" +
                 "id=" + id +
                 ", boardTitle='" + boardTitle + '\'' +
                 ", boardWriter='" + boardWriter + '\'' +
-                ", boardContents='" + boardContents + '\'' +
-                ", boardPass='" + boardPass + '\'' +
+                ", views=" + views + '\'' +
                 '}';
     }
 }
