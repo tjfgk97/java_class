@@ -11,4 +11,10 @@ public class BoardRepository {
         boardDTOList.add(boardDTO);
         return true;
     }
+
+    public List<BoardDTO> list() {
+//        BoardDTO boardDTO = null;
+
+        return boardDTOList;
+    }
 }

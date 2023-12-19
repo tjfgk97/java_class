@@ -25,7 +25,7 @@ public class BoardMain {
             if (select == 1) {
                 boardService.write();
             } else if (select == 2) {
-
+                boardService.list();
             } else if (select == 3) {
 
             } else if (select == 4) {
