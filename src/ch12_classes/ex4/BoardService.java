@@ -40,6 +40,11 @@ public class BoardService {
         } else {
             System.out.println("입력하신 글 번호는 존재하지 않습니다.");
         }
+
+        System.out.println("id\t"+"title\t"+"writer\t"+"views\t");
+        for (BoardDTO boardDTO : boardDTOList){
+            System.out.println(boardDTO.getId()+"\t"+boardDTO.getBoardTitle()+"\t"+boardDTO.getBoardWriter()+"\t"+boardDTO.getViews());
+        }
     }
 
 
@@ -95,10 +100,23 @@ public class BoardService {
 
         List<BoardDTO> boardDTOList = boardRepository.searchByTitle(title);
 
-        if(boardDTOList.size() > 0){
-            for (BoardDTO boardDTO : boardDTOList) {
-                System.out.println("boardDTO = " + boardDTO);
-            }
+//        if(boardDTOList.size() > 0){
+//            for (BoardDTO boardDTO : boardDTOList) {
+//                System.out.println("boardDTO = " + boardDTO);
+//            }
+//        }
+        // 출력 전용 메서드로 검색결과 리스트를 넘겨줌
+        listPrint(boardDTOList);
+    }
+
+    // 목록 출력 전용 메서드
+    // findAll, search 메서드로 부터 list 데이터를 전달 받아서 출력을 하는 메서드
+    private void listPrint(List<BoardDTO> boardDTOList) {
+        System.out.println("id\t" + "title\t" + "writer\t" + "hits\t" + "date\t");
+        for (BoardDTO boardDTO: boardDTOList) {
+            System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() + "\t" +
+                    boardDTO.getBoardWriter() + "\t" + boardDTO.getViews() + "\t" +
+                    boardDTO.getCreatedAt() + "\t");
         }
     }
 }
