@@ -30,9 +30,9 @@ public class BoardMain {
                 boardService.list();
                 boardService.search();
             } else if (select == 4) {
-
+                boardService.update();
             } else if (select == 5) {
-
+                boardService.delete();
             } else if (select == 6) {
 
             } else if (select == 7) {
