@@ -16,7 +16,7 @@ public class BoardMain {
 
         while (run) {
             System.out.println("-----------------------------------------------------------------------------------------------------");
-            System.out.println("1.글 작성 | 2.글 목록 | 3.글 조회 | 4.글 수정 | 5.글 삭제 | 6.검색 | 7.종료");
+            System.out.println("1.글 작성 | 2.글 목록 | 3.글 조회 | 4.글 수정 | 5.글 삭제 | 6.검색 | 7.테스트데이터 | 0.종료");
             System.out.println("-----------------------------------------------------------------------------------------------------");
             System.out.println("번호를 선택하세요.");
             System.out.print("입력>");
@@ -36,6 +36,8 @@ public class BoardMain {
             } else if (select == 6) {
                 boardService.searchByTitle();
             } else if (select == 7) {
+                boardService.testData();
+            } else if (select == 0) {
                 System.out.println("프로그램을 종료합니다.");
                 run = false;
             }
