@@ -7,8 +7,8 @@ public class AccountDTO {
 
     private Long id;
     private String accountNumber;
-    private String deposit;
-    private String withdraw;
+    private int deposit;
+    private int withdraw;
     private String bankingAt;
 
     public Long getId() {
@@ -27,19 +27,19 @@ public class AccountDTO {
         this.accountNumber = accountNumber;
     }
 
-    public String getDeposit() {
+    public int getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(String deposit) {
+    public void setDeposit(int deposit) {
         this.deposit = deposit;
     }
 
-    public String getWithdraw() {
+    public int getWithdraw() {
         return withdraw;
     }
 
-    public void setWithdraw(String withdraw) {
+    public void setWithdraw(int withdraw) {
         this.withdraw = withdraw;
     }
 
@@ -51,13 +51,13 @@ public class AccountDTO {
         this.bankingAt = bankingAt;
     }
 
-    public AccountDTO(String accountNumber, String deposit) {
+    public AccountDTO(String accountNumber, int deposit) {
         this.accountNumber = accountNumber;
         this.deposit = deposit;
     }
-
-    public AccountDTO(String accountNumber, String deposit, String withdraw) {
-        this.id = id;
+    private static Long idValue = 1L;
+    public AccountDTO(String accountNumber, int deposit, int withdraw) {
+        this.id = idValue++;
         this.accountNumber = accountNumber;
         this.deposit = deposit;
         this.withdraw = withdraw;

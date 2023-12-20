@@ -9,7 +9,7 @@ public class ClientDTO {
     private String accountNumber;
     private String clientPass;
     private String clientCreateAt;
-    private long balance;
+    private int balance;
 
 
     public Long getId() {
@@ -52,15 +52,15 @@ public class ClientDTO {
         this.clientCreateAt = clientCreateAt;
     }
 
-    public long getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(long balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 
-    public ClientDTO(String accountNumber, long balance) {
+    public ClientDTO(String accountNumber, int balance) {
         this.accountNumber = accountNumber;
         this.balance = balance;
     }

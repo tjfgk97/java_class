@@ -26,9 +26,9 @@ public class BankMain {
             } else if (select == 3) {
                 bankService.deposit();
             } else if (select == 4) {
-
+                bankService.withdraw();
             } else if (select == 5) {
-
+                bankService.history();
             } else if (select == 6) {
 
             } else if (select == 0) {
