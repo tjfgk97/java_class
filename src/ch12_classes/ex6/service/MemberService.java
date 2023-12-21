@@ -66,24 +66,44 @@ public class MemberService {
     }
 
     public void update() {
-        System.out.println("수정할 이메일을 입력하세요.");
-        String updateEmail = scn.next();
-        System.out.println("비밀번호를 입력하세요.");
-        String updatePw = scn.next();
+        if (CommonVariables.loginEmail != null) {
+            System.out.println("이메일을 입력하세요.");
+            String updateEmail = scn.next();
+            System.out.println("비밀번호를 입력하세요.");
+            String updatePw = scn.next();
 
-        boolean result = memberRepository.update(updateEmail, updatePw);
-        if(result){
-            System.out.println("비밀번호를 수정하세요.");
-            String changePw = scn.next();
-            System.out.println("이름을 수정하세요.");
-            String changeName = scn.next();
-            System.out.println("전화번호를 수정하세요.");
-            String changePhone = scn.next();
+            boolean result = memberRepository.update(updateEmail, updatePw);
+            if (result) {
+                System.out.println("수정할 비밀번호를 입력하세요.");
+                String changePw = scn.next();
+                System.out.println("수정할 이름을 입력하세요.");
+                String changeName = scn.next();
+                System.out.println("수정할 전화번호를 입력하세요.");
+                String changePhone = scn.next();
 
-            memberRepository.modify(updateEmail, changePw, changeName, changePhone);
-            System.out.println("회원정보가 수정되었습니다.");
-        }else{
-            System.out.println("회원정보 수정 실패");
+                memberRepository.modify(updateEmail, changePw, changeName, changePhone);
+                System.out.println("회원정보가 수정되었습니다.");
+            } else {
+                System.out.println("회원정보 수정 실패");
+            }
+        } else {
+            System.out.println("로그인이 필요한 서비스입니다.");
+        }
+    }
+
+    public void withdrawal() {
+        if (CommonVariables.loginEmail != null) {
+            System.out.println("정말 탈퇴하시겠습니까?");
+            int ans = scn.nextInt();
+                System.out.println("비밀번호를 입력하세요.");
+                String withdrawalPw = scn.next();
+                MemberDTO memberDTO = memberRepository.login(CommonVariables.loginEmail, withdrawalPw);
+                if (memberDTO != null) {
+                    memberRepository.withdrawal(CommonVariables.loginEmail);
+                    System.out.println("탈퇴가 완료되었습니다.");
+                }
+        } else {
+            System.out.println("로그인이 필요한 서비스입니다.");
         }
     }
 }

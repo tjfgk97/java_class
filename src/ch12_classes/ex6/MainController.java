@@ -29,7 +29,7 @@ public class MainController {
             } else if (select == 4) {
                 memberService.update();
             } else if (select == 5) {
-
+                memberService.withdrawal();
             } else if (select == 6) {
 
             } else if (select == 7) {

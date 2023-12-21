@@ -4,6 +4,7 @@ import ch12_classes.ex6.dto.MemberDTO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class MemberRepository {
     private static List<MemberDTO> memberDTOList = new ArrayList<>();
@@ -43,7 +44,7 @@ public class MemberRepository {
             if (updateEmail.equals(memberDTOList.get(i).getMemberEmail())) {
                 if (updatePw.equals(memberDTOList.get(i).getMemberPassword())) {
                     result = true;
-                }else{
+                } else {
                     System.out.println("비밀번호가 일치하지 않습니다.");
                     result = false;
                 }
@@ -54,11 +55,31 @@ public class MemberRepository {
 
     public void modify(String updateEmail, String changePw, String changeName, String changePhone) {
         for (int i = 0; i < memberDTOList.size(); i++) {
-            if(updateEmail.equals(memberDTOList.get(i).getMemberEmail())){
+            if (updateEmail.equals(memberDTOList.get(i).getMemberEmail())) {
                 memberDTOList.get(i).setMemberPassword(changePw);
                 memberDTOList.get(i).setMemberName(changeName);
                 memberDTOList.get(i).setMemberMobile(changePhone);
             }
         }
+    }
+
+    Scanner scn = new Scanner(System.in);
+
+    public boolean withdrawal(String loginEmail) {
+        boolean result = false;
+        for (int i = 0; i < memberDTOList.size(); i++) {
+            if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
+                System.out.println("다시한번 비밀번호를 입력하세요.");
+                String pw = scn.next();
+                if(pw.equals(memberDTOList.get(i).getMemberPassword())){
+                    memberDTOList.remove(i);
+                    result = true;
+                }else {
+                    System.out.println("비밀번호가 일치하지 않습니다.");
+                    result = false;
+                }
+            }
+        }
+        return result;
     }
 }
