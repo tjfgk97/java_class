@@ -64,5 +64,27 @@ public class MemberService {
             System.out.println("bookDTO = " + memberDTOList.get(i));
         }
     }
+
+    public void update() {
+        System.out.println("수정할 이메일을 입력하세요.");
+        String updateEmail = scn.next();
+        System.out.println("비밀번호를 입력하세요.");
+        String updatePw = scn.next();
+
+        boolean result = memberRepository.update(updateEmail, updatePw);
+        if(result){
+            System.out.println("비밀번호를 수정하세요.");
+            String changePw = scn.next();
+            System.out.println("이름을 수정하세요.");
+            String changeName = scn.next();
+            System.out.println("전화번호를 수정하세요.");
+            String changePhone = scn.next();
+
+            memberRepository.modify(updateEmail, changePw, changeName, changePhone);
+            System.out.println("회원정보가 수정되었습니다.");
+        }else{
+            System.out.println("회원정보 수정 실패");
+        }
+    }
 }
 
