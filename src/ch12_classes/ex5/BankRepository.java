@@ -67,11 +67,25 @@ public class BankRepository {
     }
 
     public List<AccountDTO> all(String account) {
-        List<AccountDTO> accountDTOS = null;
+        List<AccountDTO> accountDTOS = new ArrayList<>();
         for (int i = 0; i < bankingDTOList.size(); i++) {
-            System.out.println(bankingDTOList.get(i));
-            if(account.equals(bankingDTOList.get(i).getAccountNumber())){
-                accountDTOS.add(bankingDTOList.get(i));
+            AccountDTO accountDTO = bankingDTOList.get(i);
+            if (account.equals(accountDTO.getAccountNumber())) {
+                System.out.println(accountDTO);
+                accountDTOS.add(accountDTO);
+            }
+        }
+        return accountDTOS;
+    }
+
+
+    public List<AccountDTO> deposit(String account) {
+        List<AccountDTO> accountDTOS = new ArrayList<>();
+        for (int i = 0; i < bankingDTOList.size(); i++) {
+            AccountDTO accountDTO = bankingDTOList.get(i);
+            if (account.equals(accountDTO.getAccountNumber())) {
+                System.out.println(accountDTO);
+                accountDTOS.add(accountDTO);
             }
         }
         return accountDTOS;

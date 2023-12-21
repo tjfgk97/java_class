@@ -110,7 +110,6 @@ public class BankService {
                 if (select == 1) {
                     System.out.println("전체 내역을 출력합니다.");
                     List<AccountDTO> accountDTO = bankRepository.all(account);
-                    System.out.println("accountDTO = " + accountDTO);
                 } else if (select == 2) {
                     System.out.println("입금 내역을 출력합니다.");
                 } else if (select == 3) {
