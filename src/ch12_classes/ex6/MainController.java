@@ -25,7 +25,7 @@ public class MainController {
             } else if (select == 2) {
                 memberService.login();
             } else if (select == 3) {
-
+                memberService.list();
             } else if (select == 4) {
 
             } else if (select == 5) {

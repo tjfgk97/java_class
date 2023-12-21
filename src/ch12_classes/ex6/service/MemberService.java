@@ -4,6 +4,7 @@ import ch12_classes.ex6.common.CommonVariables;
 import ch12_classes.ex6.dto.MemberDTO;
 import ch12_classes.ex6.repository.MemberRepository;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MemberService {
@@ -54,6 +55,13 @@ public class MemberService {
             System.out.println("로그인 성공");
         } else {
             System.out.println("로그인 실패");
+        }
+    }
+
+    public void list() {
+        List<MemberDTO> memberDTOList = memberRepository.list();
+        for (int i = 0; i < memberDTOList.size(); i++) {
+            System.out.println("bookDTO = " + memberDTOList.get(i));
         }
     }
 }

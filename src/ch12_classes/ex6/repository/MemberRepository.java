@@ -31,4 +31,8 @@ public class MemberRepository {
         }
         return result;
     }
+
+    public List<MemberDTO> list() {
+        return memberDTOList;
+    }
 }
