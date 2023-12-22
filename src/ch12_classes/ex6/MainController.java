@@ -31,7 +31,7 @@ public class MainController {
             } else if (select == 5) {
                 memberService.withdrawal();
             } else if (select == 6) {
-
+                memberService.logout();
             } else if (select == 7) {
 
             } else if (select == 0) {

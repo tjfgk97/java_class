@@ -95,15 +95,29 @@ public class MemberService {
         if (CommonVariables.loginEmail != null) {
             System.out.println("정말 탈퇴하시겠습니까?");
             int ans = scn.nextInt();
-                System.out.println("비밀번호를 입력하세요.");
-                String withdrawalPw = scn.next();
+            System.out.println("비밀번호를 입력하세요.");
+            String withdrawalPw = scn.next();
+            if(ans == 1){
                 MemberDTO memberDTO = memberRepository.login(CommonVariables.loginEmail, withdrawalPw);
                 if (memberDTO != null) {
                     memberRepository.withdrawal(CommonVariables.loginEmail);
                     System.out.println("탈퇴가 완료되었습니다.");
                 }
+            }
         } else {
             System.out.println("로그인이 필요한 서비스입니다.");
+        }
+    }
+
+    public void logout() {
+        System.out.println("로그아웃할 이메일을 입력하세요.");
+        String logoutEmail = scn.next();
+        System.out.println("비밀번호를 입력하세요.");
+        String logoutPw = scn.next();
+
+        if(CommonVariables.loginEmail != null){
+            memberRepository.logout(logoutEmail, logoutPw);
+            CommonVariables.loginEmail = null;
         }
     }
 }

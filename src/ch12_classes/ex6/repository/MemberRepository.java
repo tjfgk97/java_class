@@ -71,13 +71,30 @@ public class MemberRepository {
             if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
                 System.out.println("다시한번 비밀번호를 입력하세요.");
                 String pw = scn.next();
-                if(pw.equals(memberDTOList.get(i).getMemberPassword())){
+                if (pw.equals(memberDTOList.get(i).getMemberPassword())) {
                     memberDTOList.remove(i);
                     result = true;
-                }else {
+                } else {
                     System.out.println("비밀번호가 일치하지 않습니다.");
                     result = false;
                 }
+            }
+        }
+        return result;
+    }
+
+    public boolean logout(String logoutEmail, String logoutPw) {
+        boolean result = false;
+        for (int i = 0; i < memberDTOList.size(); i++) {
+            if (logoutEmail.equals(memberDTOList.get(i).getMemberEmail())) {
+                if (logoutPw.equals(memberDTOList.get(i).getMemberPassword())) {
+                    result = true;
+                    System.out.println("로그아웃이 완료되었습니다."); //코드 진행 후 완료 메세지를 찍어줘야한다. 순서 주의!
+                }else {
+                    System.out.println("비밀번호가 일치하지 않습니다.");
+                }
+            } else {
+                System.out.println("요청하신 정보를 찾을 수 없습니다.");
             }
         }
         return result;
