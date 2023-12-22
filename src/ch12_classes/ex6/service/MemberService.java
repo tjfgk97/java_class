@@ -2,6 +2,7 @@ package ch12_classes.ex6.service;
 
 import ch12_classes.ex6.common.CommonVariables;
 import ch12_classes.ex6.dto.MemberDTO;
+import ch12_classes.ex6.repository.BoardRepository;
 import ch12_classes.ex6.repository.MemberRepository;
 
 import java.util.List;
@@ -97,7 +98,7 @@ public class MemberService {
             int ans = scn.nextInt();
             System.out.println("비밀번호를 입력하세요.");
             String withdrawalPw = scn.next();
-            if(ans == 1){
+            if (ans == 1) {
                 MemberDTO memberDTO = memberRepository.login(CommonVariables.loginEmail, withdrawalPw);
                 if (memberDTO != null) {
                     memberRepository.withdrawal(CommonVariables.loginEmail);
@@ -115,9 +116,47 @@ public class MemberService {
         System.out.println("비밀번호를 입력하세요.");
         String logoutPw = scn.next();
 
-        if(CommonVariables.loginEmail != null){
+        if (CommonVariables.loginEmail != null) {
             memberRepository.logout(logoutEmail, logoutPw);
             CommonVariables.loginEmail = null;
+        }
+    }
+
+    public void inBoard() {
+        BoardService boardService = new BoardService();
+        if (CommonVariables.loginEmail != null) {
+            Scanner scn = new Scanner(System.in);
+            boolean run = true;
+            int selectBoard = 0;
+
+            while (run) {
+                System.out.println("====== 게시판 ======");
+                System.out.println("---------------------------------------------------------------------------------------");
+                System.out.println("1.글작성 | 2.글목록 | 3.글조회 | 4.글수정 | 5.글삭제 | 6.검색 | 99.sample | 0.메인메뉴 ");
+                System.out.println("---------------------------------------------------------------------------------------");
+                System.out.print("선택>");
+                selectBoard = scn.nextInt();
+
+                if (selectBoard == 1) {
+                    boardService.boardWrite();
+                } else if (selectBoard == 2) {
+                    boardService.boardList();
+                } else if (selectBoard == 3) {
+                    boardService.searchBoard();
+                } else if (selectBoard == 4) {
+
+                } else if (selectBoard == 5) {
+
+                } else if (selectBoard == 6) {
+
+                } else if (selectBoard == 99) {
+
+                } else if (selectBoard == 0) {
+                    System.out.println("메인으로 돌아갑니다.");
+                }
+            }
+        } else {
+            System.out.println("로그인이 필요한 서비스입니다.");
         }
     }
 }

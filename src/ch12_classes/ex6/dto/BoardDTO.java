@@ -47,8 +47,8 @@ public class BoardDTO {
         return boardHits;
     }
 
-    public void setBoardHits(int boardHits) {
-        this.boardHits = boardHits++;
+    public void setBoardHits() {
+        this.boardHits++;
     }
 
     public String getCreatedAt() {
@@ -63,13 +63,19 @@ public class BoardDTO {
 
     }
 
+    public BoardDTO(String boardTitle, String boardContents) {
+        this.boardTitle = boardTitle;
+        this.boardContents = boardContents;
+        this.createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
     private static Long idValue = 1L;
-    public BoardDTO(String boardTitle, String boardWriter, String boardContents, int boardHits) {
+    public BoardDTO(String boardTitle, String boardWriter, String boardContents) {
         this.id = idValue++;
         this.boardTitle = boardTitle;
         this.boardWriter = boardWriter;
         this.boardContents = boardContents;
-//        this.boardHits = boardHits;
+        this.boardHits = 0;
         this.createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 

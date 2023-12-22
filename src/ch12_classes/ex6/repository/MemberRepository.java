@@ -90,7 +90,7 @@ public class MemberRepository {
                 if (logoutPw.equals(memberDTOList.get(i).getMemberPassword())) {
                     result = true;
                     System.out.println("로그아웃이 완료되었습니다."); //코드 진행 후 완료 메세지를 찍어줘야한다. 순서 주의!
-                }else {
+                } else {
                     System.out.println("비밀번호가 일치하지 않습니다.");
                 }
             } else {

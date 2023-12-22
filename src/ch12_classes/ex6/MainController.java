@@ -33,7 +33,7 @@ public class MainController {
             } else if (select == 6) {
                 memberService.logout();
             } else if (select == 7) {
-
+                memberService.inBoard();
             } else if (select == 0) {
                 System.out.println("프로그램을 종료합니다.");
                 run = false;
