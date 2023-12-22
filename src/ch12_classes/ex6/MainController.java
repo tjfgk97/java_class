@@ -1,6 +1,5 @@
 package ch12_classes.ex6;
 
-import ch12_classes.ex6.dto.MemberDTO;
 import ch12_classes.ex6.service.MemberService;
 
 import java.util.Scanner;

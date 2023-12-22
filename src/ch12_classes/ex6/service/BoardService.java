@@ -2,8 +2,10 @@ package ch12_classes.ex6.service;
 
 import ch12_classes.ex6.common.CommonVariables;
 import ch12_classes.ex6.dto.BoardDTO;
+import ch12_classes.ex6.dto.CommentDTO;
 import ch12_classes.ex6.dto.MemberDTO;
 import ch12_classes.ex6.repository.BoardRepository;
+import ch12_classes.ex6.repository.CommentRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -50,6 +52,7 @@ public class BoardService {
         }
     }
 
+    
     public void searchBoard() {
         System.out.println("조회할 게시글의 번호를 입력하세요.");
         Long searchId = scn.nextLong();
@@ -57,6 +60,11 @@ public class BoardService {
         BoardDTO boardDTO = boardRepository.searchBoard(searchId);
         if (boardDTO != null) {
             System.out.println("boardDTO = " + boardDTO);
+
+            CommentRepository commentRepository = new CommentRepository();
+            System.out.println("====== 댓글 ======");
+//            List<CommentDTO> commentDTOList = commentRepository.checkComment(searchId);
+            
         } else {
             System.out.println("존재하지 않는 게시글입니다.");
         }
