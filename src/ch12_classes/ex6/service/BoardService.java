@@ -55,9 +55,9 @@ public class BoardService {
         Long searchId = scn.nextLong();
 
         BoardDTO boardDTO = boardRepository.searchBoard(searchId);
-        if(boardDTO != null){
+        if (boardDTO != null) {
             System.out.println("boardDTO = " + boardDTO);
-        }else {
+        } else {
             System.out.println("존재하지 않는 게시글입니다.");
         }
 
@@ -66,20 +66,20 @@ public class BoardService {
     public void boardUpdate() {
         System.out.println("수정할 게시글의 번호를 입력하세요.");
         Long updateId = scn.nextLong();
-        
-        if(CommonVariables.loginEmail != null){
+
+        if (CommonVariables.loginEmail != null) {
             System.out.println("제목을 수정하세요.");
             String updateTitle = scn.next();
             System.out.println("내용을 수정하세요.");
             String updateContent = scn.next();
-            
+
             boolean result = boardRepository.boardUpdate(updateId, updateTitle, updateContent);
-            if(result){
+            if (result) {
                 System.out.println("수정이 완료되었습니다.");
-            }else{
+            } else {
                 System.out.println("수정 실패");
             }
-        }else{
+        } else {
             System.out.println("로그인이 필요한 서비스입니다.");
         }
     }
@@ -87,12 +87,34 @@ public class BoardService {
     public void boardDelete() {
         System.out.println("삭제할 게시글의 번호를 입력하세요.");
         Long deleteId = scn.nextLong();
-        
+
         boolean result = boardRepository.boardDelete(deleteId);
-        if(result){
+        if (result) {
             System.out.println("게시글이 삭제되었습니다.");
-        }else {
+        } else {
             System.out.println("삭제 실패");
+        }
+    }
+
+    public void find() {
+        System.out.println("검색할 키워드를 입력하세요.");
+        String findTitle = scn.next();
+
+        List<BoardDTO> boardDTOList = boardRepository.find(findTitle);
+
+        if (boardDTOList.size() > 0) {
+            for(BoardDTO boardDTO : boardDTOList) {
+                System.out.println("boardDTO = " + boardDTOList);
+            }
+        } else {
+            System.out.println("일치하는 키워드가 없습니다.");
+        }
+    }
+
+    public void sampleData() {
+        for (int i = 1; i < 11; i++) {
+            BoardDTO boardDTO = new BoardDTO("title" + i, "writer" + i,"contents" + i);
+            boardRepository.boardWrite(boardDTO);
         }
     }
 }

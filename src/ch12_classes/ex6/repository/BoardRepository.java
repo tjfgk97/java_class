@@ -1,7 +1,6 @@
 package ch12_classes.ex6.repository;
 
 import ch12_classes.ex6.dto.BoardDTO;
-import ch12_classes.ex6.dto.CommentDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,5 +61,17 @@ public class BoardRepository {
             }
         }
         return result;
+    }
+
+    public List<BoardDTO> find(String findTitle) {
+//        BoardDTO boardDTO = null;
+        List<BoardDTO> boardDTOList1 = new ArrayList<>();
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if(boardDTOList.get(i).getBoardTitle().contains(findTitle)){
+                BoardDTO boardDTO = boardDTOList.get(i);
+                boardDTOList1.add(boardDTO);
+            }
+        }
+        return boardDTOList1;
     }
 }

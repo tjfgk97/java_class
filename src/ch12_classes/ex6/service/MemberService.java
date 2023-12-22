@@ -148,11 +148,12 @@ public class MemberService {
                 } else if (selectBoard == 5) {
                     boardService.boardDelete();
                 } else if (selectBoard == 6) {
-
+                    boardService.find();
                 } else if (selectBoard == 99) {
-
+                    boardService.sampleData();
                 } else if (selectBoard == 0) {
                     System.out.println("메인으로 돌아갑니다.");
+                    run = false;
                 }
             }
         } else {
