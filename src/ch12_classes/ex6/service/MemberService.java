@@ -144,9 +144,9 @@ public class MemberService {
                 } else if (selectBoard == 3) {
                     boardService.searchBoard();
                 } else if (selectBoard == 4) {
-
+                    boardService.boardUpdate();
                 } else if (selectBoard == 5) {
-
+                    boardService.boardDelete();
                 } else if (selectBoard == 6) {
 
                 } else if (selectBoard == 99) {

@@ -33,7 +33,7 @@ public class BoardService {
     public void boardList() {
         List<BoardDTO> boardDTOList = boardRepository.boardList();
         if (boardDTOList != null) {
-            System.out.println("boardDTOList = " + boardDTOList);
+//            System.out.println("boardDTOList = " + boardDTOList);
             listPrint(boardDTOList);
         } else {
             System.out.println("작성된 게시글이 없습니다.");
@@ -42,13 +42,11 @@ public class BoardService {
     }
 
     private void listPrint(List<BoardDTO> boardDTOList) {
+        System.out.println("id\t" + "title\t" + "writer\t" + "hits\t" + "date\t");
         for (BoardDTO boardDTO : boardDTOList) {
-            System.out.println("id = " + boardDTO.getId() + '\'' +
-                    " Title = " + boardDTO.getBoardTitle() + '\'' +
-                    " Writer = " + boardDTO.getBoardWriter() + '\'' +
-                    " Contents = " + boardDTO.getBoardContents() + '\'' +
-                    " hits = " + '\'' + boardDTO.getBoardHits() + '\'' +
-                    " date = " + boardDTO.getCreatedAt());
+            System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() + "\t" +
+                    boardDTO.getBoardWriter() + "\t" + boardDTO.getBoardHits() + "\t" +
+                    boardDTO.getCreatedAt() + "\t");
         }
     }
 
@@ -63,5 +61,38 @@ public class BoardService {
             System.out.println("존재하지 않는 게시글입니다.");
         }
 
+    }
+
+    public void boardUpdate() {
+        System.out.println("수정할 게시글의 번호를 입력하세요.");
+        Long updateId = scn.nextLong();
+        
+        if(CommonVariables.loginEmail != null){
+            System.out.println("제목을 수정하세요.");
+            String updateTitle = scn.next();
+            System.out.println("내용을 수정하세요.");
+            String updateContent = scn.next();
+            
+            boolean result = boardRepository.boardUpdate(updateId, updateTitle, updateContent);
+            if(result){
+                System.out.println("수정이 완료되었습니다.");
+            }else{
+                System.out.println("수정 실패");
+            }
+        }else{
+            System.out.println("로그인이 필요한 서비스입니다.");
+        }
+    }
+
+    public void boardDelete() {
+        System.out.println("삭제할 게시글의 번호를 입력하세요.");
+        Long deleteId = scn.nextLong();
+        
+        boolean result = boardRepository.boardDelete(deleteId);
+        if(result){
+            System.out.println("게시글이 삭제되었습니다.");
+        }else {
+            System.out.println("삭제 실패");
+        }
     }
 }
