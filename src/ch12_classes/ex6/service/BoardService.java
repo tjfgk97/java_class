@@ -52,7 +52,7 @@ public class BoardService {
         }
     }
 
-    
+
     public void searchBoard() {
         System.out.println("조회할 게시글의 번호를 입력하세요.");
         Long searchId = scn.nextLong();
@@ -63,10 +63,35 @@ public class BoardService {
 
             CommentRepository commentRepository = new CommentRepository();
             System.out.println("====== 댓글 ======");
-//            List<CommentDTO> commentDTOList = commentRepository.checkComment(searchId);
-            
+            List<CommentDTO> commentDTOList = commentRepository.checkComment(searchId);
+            if (commentDTOList.isEmpty()) { //isEmpty를 사용하지 않고는 어케 하는 건지..?
+                System.out.println("작성된 댓글이 없습니다.");
+            } else {
+                System.out.println("commentDTOList = " + commentDTOList);
+            }
+            System.out.println("댓글을 작성하시려면 1번을 입력해주세요");
+            System.out.println("메인메뉴로 돌아가려면 2번을 입력해주세요");
+            System.out.println("입력>");
+            int choice = scn.nextInt();
+
+            if (choice == 1) {
+                System.out.println("댓글을 입력하세요.");
+                String writeComment = scn.next();
+                CommentDTO commentDTO = new CommentDTO(writeComment);
+                boolean result = commentRepository.addComment(commentDTO);
+
+                if (result) {
+                    commentDTOList.add(commentDTO);
+                    System.out.println("댓글 작성 성공");
+                } else {
+                    System.out.println("댓글 작성 실패");
+                }
+            } else if (choice == 2) {
+                System.out.println("메인으로 돌아갑니다.");
+            }
+
         } else {
-            System.out.println("존재하지 않는 게시글입니다.");
+            System.out.println("본인이 작성한 글만 조회할 수 있습니다.");
         }
 
     }
@@ -75,7 +100,7 @@ public class BoardService {
         System.out.println("수정할 게시글의 번호를 입력하세요.");
         Long updateId = scn.nextLong();
 
-        if (CommonVariables.loginEmail != null) {
+        if (updateId.equals(CommonVariables.loginEmail)) {
             System.out.println("제목을 수정하세요.");
             String updateTitle = scn.next();
             System.out.println("내용을 수정하세요.");
@@ -88,7 +113,7 @@ public class BoardService {
                 System.out.println("수정 실패");
             }
         } else {
-            System.out.println("로그인이 필요한 서비스입니다.");
+            System.out.println("작성자만 수정 가능합니다.");
         }
     }
 
@@ -111,7 +136,7 @@ public class BoardService {
         List<BoardDTO> boardDTOList = boardRepository.find(findTitle);
 
         if (boardDTOList.size() > 0) {
-            for(BoardDTO boardDTO : boardDTOList) {
+            for (BoardDTO boardDTO : boardDTOList) {
                 System.out.println("boardDTO = " + boardDTOList);
             }
         } else {
@@ -121,7 +146,7 @@ public class BoardService {
 
     public void sampleData() {
         for (int i = 1; i < 11; i++) {
-            BoardDTO boardDTO = new BoardDTO("title" + i, "writer" + i,"contents" + i);
+            BoardDTO boardDTO = new BoardDTO("title" + i, "writer" + i, "contents" + i);
             boardRepository.boardWrite(boardDTO);
         }
     }

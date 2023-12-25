@@ -3,6 +3,7 @@ package ch12_classes.ex6.service;
 import ch12_classes.ex6.common.CommonVariables;
 import ch12_classes.ex6.dto.MemberDTO;
 import ch12_classes.ex6.repository.BoardRepository;
+import ch12_classes.ex6.repository.CommentRepository;
 import ch12_classes.ex6.repository.MemberRepository;
 
 import java.util.List;
@@ -54,6 +55,7 @@ public class MemberService {
         if (result != null) {
             CommonVariables.loginEmail = loginEmail;
             System.out.println("로그인 성공");
+            System.out.println(CommonVariables.loginEmail + " 님, 환영합니다!");
         } else {
             System.out.println("로그인 실패");
         }

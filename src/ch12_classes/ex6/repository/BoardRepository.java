@@ -39,14 +39,14 @@ public class BoardRepository {
                 boardDTOList.get(i).setBoardTitle(updateTitle);
                 boardDTOList.get(i).setBoardContents(updateContent);
                 result = true;
+                break;
             } else {
-//                System.out.println("존재하지 않는 게시글입니다.");
-                result = false;
+                System.out.println("존재하지 않는 게시글입니다.");
+//                result = false;
             }
         }
         return result;
     }
-
 
 
     public boolean boardDelete(Long deleteId) {
@@ -55,7 +55,7 @@ public class BoardRepository {
             if (deleteId.equals(boardDTOList.get(i).getId())) {
                 boardDTOList.remove(i);
                 result = true;
-            }else {
+            } else {
                 result = false;
                 System.out.println("존재하지 않는 게시글입니다.");
             }
@@ -67,7 +67,7 @@ public class BoardRepository {
 //        BoardDTO boardDTO = null;
         List<BoardDTO> boardDTOList1 = new ArrayList<>();
         for (int i = 0; i < boardDTOList.size(); i++) {
-            if(boardDTOList.get(i).getBoardTitle().contains(findTitle)){
+            if (boardDTOList.get(i).getBoardTitle().contains(findTitle)) {
                 BoardDTO boardDTO = boardDTOList.get(i);
                 boardDTOList1.add(boardDTO);
             }

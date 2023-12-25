@@ -6,13 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommentRepository {
-    List<CommentDTO> commentDTOList = new ArrayList<>();
+    private List<CommentDTO> commentDTOList;
+    public CommentRepository(){
+        commentDTOList = new ArrayList<>();
+    }
 
-//    public List<CommentDTO> checkComment(Long searchId) {
-//        List<CommentDTO> commentDTOS = new ArrayList<>();
-//        for (int i = 0; i < commentDTOList.size(); i++) {
-//
-//        }
-//    }
+    public List<CommentDTO> checkComment(Long searchId) {
+        List<CommentDTO> commentDTOS = new ArrayList<>();
+        for (int i = 0; i < commentDTOList.size(); i++) {
+            if (searchId.equals(commentDTOList.get(i).getId())) {
+                commentDTOS.add(commentDTOList.get(i));
+            }
+        }
+        return commentDTOS;
+    }
+
+
+    public boolean addComment(CommentDTO commentDTO) {
+        return commentDTOList.add(commentDTO);
+
+    }
 }
 

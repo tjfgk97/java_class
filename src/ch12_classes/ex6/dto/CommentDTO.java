@@ -10,6 +10,8 @@ public class CommentDTO {
     private String commentContents;
     private String createdAt;
 
+
+
     public Long getId() {
         return id;
     }
@@ -51,6 +53,11 @@ public class CommentDTO {
     }
 
     public CommentDTO() {
+    }
+
+    public CommentDTO(String commentContents) {
+//        this.boardId = boardId;
+        this.commentContents = commentContents;
     }
 
     private static Long idValue = 1L;
