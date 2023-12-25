@@ -77,7 +77,7 @@ public class BoardService {
             if (choice == 1) {
                 System.out.println("댓글을 입력하세요.");
                 String writeComment = scn.next();
-                CommentDTO commentDTO = new CommentDTO(writeComment);
+                CommentDTO commentDTO = new CommentDTO(searchId, CommonVariables.loginEmail, writeComment);
                 boolean result = commentRepository.addComment(commentDTO);
 
                 if (result) {
