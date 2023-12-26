@@ -36,5 +36,14 @@ public class Ex01_MapBasic {
             System.out.println("s = " + s);
         }
 
+        Map<Long, String> map3 = new HashMap<>();
+        // 해당 키에 최초로 값을 저장하는 경우 null이 뜬다.
+        // 그러나 해당 키와 관련된 이전 값이 있는 경우, 이전 값이 뜬다.
+        String ss1 = map3.put(1L, "안녕");
+        System.out.println("ss1 = " + ss1);
+        String ss2 = map3.put(2L, "hello");
+        System.out.println("ss2 = " + ss2);
+        String ss3 = map3.put(1L, "안녕하세요.");
+        System.out.println("ss3 = " + ss3);
     }
 }
