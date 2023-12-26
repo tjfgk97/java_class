@@ -64,10 +64,10 @@ public class BoardService {
             CommentRepository commentRepository = new CommentRepository();
             System.out.println("====== 댓글 ======");
             List<CommentDTO> commentDTOList = commentRepository.checkComment(searchId);
-            if (commentDTOList.isEmpty()) { //isEmpty를 사용하지 않고는 어케 하는 건지..?
-                System.out.println("작성된 댓글이 없습니다.");
-            } else {
+            if (commentDTOList.size() > 0) {
                 System.out.println("commentDTOList = " + commentDTOList);
+            } else {
+                System.out.println("작성된 댓글이 없습니다.");
             }
             System.out.println("댓글을 작성하시려면 1번을 입력해주세요");
             System.out.println("메인메뉴로 돌아가려면 2번을 입력해주세요");
@@ -87,7 +87,7 @@ public class BoardService {
                     System.out.println("댓글 작성 실패");
                 }
             } else if (choice == 2) {
-                System.out.println("메인으로 돌아갑니다.");
+                System.out.println("이전으로 돌아갑니다.");
             }
 
         } else {
